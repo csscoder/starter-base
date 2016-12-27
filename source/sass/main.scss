@@ -1,0 +1,14 @@
+// base imports
+@import "common/mixins/mixin";
+@import "common/normalized";
+
+// include fonts
+@include font-face('HeliosCond', '../fonts/HeliosCond-Regular/HeliosCond-Regular', 400, normal, woff2 woff);
+@include font-face('HeliosCond', '../fonts/HeliosCond-Bold/HeliosCond-Bold', 700, normal, woff2 woff);
+
+.l-body {
+  font-family: 'HeliosCond', sans-serif;
+  font-size: 16px;
+  line-height: 1.4;
+}
+

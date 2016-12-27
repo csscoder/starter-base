@@ -1,0 +1,34 @@
+// Transition variants
+$transitionTime: .3s;
+$transitionFunction: ease-in;
+
+// all
+%tr-all {
+  transition: all $transitionTime $transitionFunction;
+}
+
+// Border color
+%tr-border-color {
+  transition: border-color $transitionTime $transitionFunction;
+}
+
+// Opacity
+%tr-opacity {
+  transition: opacity $transitionTime $transitionFunction;
+}
+
+// BackgroundColor
+%tr-bgcolor {
+  transition: background-color $transitionTime $transitionFunction;
+}
+
+// ColorText
+%tr-color {
+  transition: color $transitionTime $transitionFunction;
+}
+
+// boxshadow
+%tr-shadow {
+  transition: box-shadow $transitionTime $transitionFunction;
+}
+

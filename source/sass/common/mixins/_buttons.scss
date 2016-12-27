@@ -1,0 +1,51 @@
+%image-loading {
+  // size 45*7
+  background-image: url('data:image/gif;base64,R0lGODlhLQAHAPEAAKqnperq6b+9u9TT0iH/C05FVFNDQVBFMi4wAwEAAAAh/wtYTVAgRGF0YVhNUAE/ACH5BAUKAAAALAAAAAAtAAcAQAIfjI8Hm20LnJyP0Rqvxhvubl3eJ4bUSE7oaabNqrZSAQAh+QQFCgABACwAAAAADQAHAAACCISPqcvtD2MBACH5BAUKAAEALAAAAAAdAAcAAAIdlI8XC+3vkjQrwNumrPjqxHXPh4RiRlLMiabmWQAAIfkEBQoAAQAsAAAAAC0ABwAAAjKcjxcr7e9WALTamrKRsDd5hZSWcR4EiheZmGe0qCurMC88yRi92beQ0gF4vcDvExMCCgAh+QQFCgAAACwAAAAALQAHAAACMoyPBzvt7xYQtNqaspGwN3mFlJZxHgSKF5mYZ7SoK6swLzzJGL3Z95DSCXg9wO8TEwoKACH5BAUKAAAALBAAAAAdAAcAAAIdjI8HO+3vkjQLwNumrPjqxHXPh4RiRlLMiabmWQAAOw==');
+}
+
+%btn {
+  text-decoration: none;
+  display: inline-block;
+  vertical-align: top;
+  border-right: 0;
+  cursor: pointer;
+  font-family: inherit;
+  border: none;
+  outline: none;
+  @extend %tr-bgcolor;
+}
+
+%btn-normal {
+  line-height: 1.4;
+  font-size: 20px;
+  border: 2px solid;
+  padding: 10px 20px;
+}
+
+%btn-green {
+  $mainColor: #71cc00;
+  color: #fff;
+  background-color: $mainColor;
+  border-color: darken($mainColor, 10);
+  &:hover {
+    background-color: darken($mainColor, 5);
+  }
+  &:active {
+    background-color: darken($mainColor, 10);
+  }
+}
+
+%loading-button {
+  color: transparent;
+  &:after {
+    opacity: 1;
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    background-position: 50% 50%;
+    @extend %image-loading;
+  }
+}

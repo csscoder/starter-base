@@ -1,0 +1,17 @@
+root = true
+
+[*]
+end_of_line = lf
+insert_final_newline = true
+
+[*]
+charset = utf-8
+
+# Tab indentation (no size specified)
+[*.{md, html}]
+indent_style = tab
+
+# 1 tab indentation
+[*.{js,scss,sass,jade,pug,css,styl,json,yml,vue}]
+indent_style = space
+indent_size = 2

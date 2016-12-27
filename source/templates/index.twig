@@ -1,0 +1,104 @@
+{% extends 'layouts/_default.twig' %}
+
+{% block meta-title %}Форма{% endblock %}
+{% block meta-description %}Description{% endblock %}
+{% block meta-keywords %}Keywords{% endblock %}
+{% block og-url %}https://google.com{% endblock %}
+{% block og-img %}https://google.com{% endblock %}
+
+{% block content %}
+	
+	<div class="block-pay" id="payForm">
+		<div class="l-top-block">
+			<div class="top-block">
+				<div class="top-block__monkey"><img src="img/game.png" alt="game"></div>
+				<div class="top-block__title"><img src="img/text.png" alt="text"></div>
+			</div>
+		</div>
+		<!-- /.top-block -->
+		
+		<div class="l-steps">
+			<div class="steps">
+				<div class="steps__item style--first">
+					<div class="steps__title">Шаг 1</div>
+					<div class="steps__note">Укажите ваши данные</div>
+				</div>
+				<div class="steps__item style--second">
+					<div class="steps__title">Шаг 2</div>
+					<div class="steps__note">Выберите способ оплаты</div>
+				</div>
+				<div class="steps__item style--third">
+					<div class="steps__title">Шаг 3</div>
+					<div class="steps__note">Завершение оплаты</div>
+				</div>
+			</div>
+		</div>
+		<!-- /.steps -->
+		
+		<div class="l-pay-form">
+			<div class="pay-form__title">Укажите ваши данные:</div>
+			<div class="pay-step">1</div>
+			<div class="pay-price">
+				<div class="pay-price__title">Стоимость курса:</div>
+				<div class="pay-price__old">5900 руб</div>
+				<div class="pay-price__current" v-show="priceCurrent" v-cloak>
+					{% raw %} {{ priceCurrent }} руб {% endraw %}
+				</div>
+			</div>
+			<!-- /.pay-price -->
+			<form action="http://pay.willbedone.ru/checkout/save_order_data.php" class="pay-form" @submit="validateBeforeSubmit" autocomplete="off" novalidate method="post">
+				<div class="pay-form__row">
+					<div class="pay-form__label">Имя*</div>
+					<input type="text"
+					       name="name"
+					       id="name"
+					       placeholder="Имя"
+					       class="form__input"
+					       v-model="formPay.name.field"
+					       v-validate
+					       data-vv-as="Имя"
+					       data-vv-rules="required"
+					       :class="{'state--error': errors.has('name')}">
+					<div class="input__danger" v-if="errors.has('name')" v-cloak>{% raw %} {{ errors.first('name') }} {% endraw %}  </div>
+				</div>
+				<div class="pay-form__row">
+					<div class="pay-form__label">Email*</div>
+					<input
+							type="email"
+							name="email"
+							id="mail"
+							placeholder="E-mail"
+							class="form__input"
+							v-validate
+							data-vv-rules="required|email"
+							data-vv-as="Email"
+							:class="{'state--error': errors.has('email')}"
+					>
+					<div class="input__danger" v-if="errors.has('email')" v-cloak>{% raw %} {{ errors.first('email') }} {% endraw %} </div>
+				</div>
+				<div class="pay-form__row">
+					<input type="hidden" name="additional_field1_name" value="Skype"/>
+					<div class="pay-form__label">Skype</div>
+					<input type="text" name="additional_field1" id="skype" placeholder="Skype" class="form__input">
+				</div>
+				<div class="pay-form__row style--more">
+					<button  class="pay-form-btn" type="submit" :class="{'state--loading': formPay.formSend}">Оформить заказ</button>
+					<input type="hidden" name="form_charset" id="form_charset" value=""><input type="hidden" name="tovar_id" value="280378">
+					<input type="hidden" name="form_id" value="26100">
+					<input type="hidden" name="order_page_referer" id="order_page_referer" value=""/>
+				</div>
+			</form>
+		</div>
+		<!-- /.pay-form -->
+	</div>
+	<!-- /.block-pay -->
+	<div class="hide">
+		<div class="bl-price">
+			<script charset="UTF-8" type="text/javascript" src="http://pay.willbedone.ru/widgets/tovar_price.php?tovar_id=280378"></script>
+		</div>
+	</div>
+	<!-- /.hide -->
+
+
+{% endblock %}
+

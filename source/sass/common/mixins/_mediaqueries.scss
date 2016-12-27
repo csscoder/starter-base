@@ -1,0 +1,41 @@
+// media
+$m_full: 1400px; // Media for Full screen monitor
+$m_pad: 999px; // Media for Tablet PC
+$m_smart: 767px; // Media for Smartphones
+$m_phone: 480px; // Media for small phones
+
+@mixin res($media) {
+  @if $media == phone {
+    @media screen and (max-width: 40em) {
+      @content;
+    }
+  } @else if $media == tablet {
+    @media screen and (min-width: 40.063em) {
+      @content;
+    }
+  } @else if $media == tablet-only {
+    @media (min-width: 40.063em) and (max-width: 64em) {
+      @content;
+    }
+  } @else if $media == desktop {
+    @media screen and (min-width: 64.063em) {
+      @content;
+    }
+  } @else if $media == desktop-only {
+    @media (min-width: 64.063em) and (max-width: 90em) {
+      @content;
+    }
+  } @else if $media == xlarge {
+    @media screen and (min-width: 90.063em) {
+      @content;
+    }
+  } @else if $media == xlarge-only {
+    @media (min-width: 90.063em) and (max-width: 120em) {
+      @content;
+    }
+  } @else if $media == xxlarge {
+    @media screen and (min-width: 120.063em) {
+      @content;
+    }
+  }
+}

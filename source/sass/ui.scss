@@ -1,0 +1,120 @@
+@import "common/mixins/mixin";
+
+//***************************************
+// Buttons
+//***************************************
+
+// Sizes buttons sets
+%btn-normal {
+  line-height: 1.4;
+  font-size: 20px;
+  padding: em(10 20, 20);
+  @include res(phone) {
+    font-size: 16px;
+  }
+}
+
+// Color style sets
+%btn-green {
+  $mainColor: #71cc00;
+  color: #fff;
+  background-color: $mainColor;
+  &:hover {
+    background-color: darken($mainColor, 5);
+  }
+  &:active {
+    background-color: darken($mainColor, 10);
+  }
+  &.state--loading,
+  &.state--disabled {
+    background-color: $mainColor !important;
+    cursor: not-allowed;
+  }
+}
+
+%btn-blue {
+  $mainColor: #177acc;
+  color: #fff;
+  background-color: $mainColor;
+  &:hover {
+    background-color: darken($mainColor, 5);
+  }
+  &:active {
+    background-color: darken($mainColor, 10);
+  }
+  &.state--loading,
+  &.state--disabled {
+    background-color: $mainColor !important;
+    cursor: not-allowed;
+  }
+}
+
+.btn {
+  @extend %btn;
+
+  &.style--primary {
+    @extend %btn-blue;
+  }
+
+  &.style--success {
+    @extend %btn-green;
+  }
+
+  &.size--normal {
+    @extend %btn-normal;
+  }
+
+  &.state--loading {
+    @extend %loading-button-default;
+  }
+
+  &.state--disabled {
+    @extend %bnt-disable;
+  }
+
+}
+
+//***************************************
+// inputs
+//***************************************
+
+// size input sets
+%input-size-normal {
+  line-height: 1.4;
+  font-size: 20px;
+  border-width: 1px;
+  border-style: solid;
+  padding: em(10 20, 20);
+  @include res(phone) {
+    font-size: 16px;
+  }
+}
+
+%input-color {
+  border-color: #ccc;
+  color: #000;
+  @include placeholder() {
+    @include placeholder() {
+      color: rgba(#999, .4);
+    }
+  }
+  &:focus {
+    border-color: #0071bb;
+  }
+  &.state--error {
+    $mainColor: #f11500;
+    border-color: $mainColor;
+    @include placeholder() {
+      color: rgba($mainColor, .4);
+    }
+  }
+}
+
+.input {
+  @extend %input;
+  @extend %input-color;
+
+  &.size--normal {
+    @extend %input-size-normal;
+  }
+}

@@ -1,0 +1,23 @@
+// PX to EM function
+// use font-size em(22px, 16px)
+
+$base-font-size: 16px;
+
+@function _convert-to-em($px, $base) {
+
+  @if (unitless($px)) {
+    $px: $px * 1px;
+  }
+  @if (unitless($base)) {
+    $base: $base * 1px;
+  }
+  @return $px / $base * 1em;
+}
+
+@function em($value, $base: $base-font-size) {
+  $emValues: ();
+  @each $item in $value {
+    $emValues: append($emValues, _convert-to-em($item, $base) )
+  }
+  @return $emValues;
+}

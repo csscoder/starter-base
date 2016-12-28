@@ -1,0 +1,38 @@
+{% extends 'layouts/_default.twig' %}
+
+{% block meta-title %}Форма{% endblock %}
+{% block meta-description %}Description{% endblock %}
+{% block meta-keywords %}Keywords{% endblock %}
+{% block og-url %}https://google.com{% endblock %}
+{% block og-img %}https://google.com{% endblock %}
+
+{% block content %}
+  <div style="padding: 30px">
+    <h2>Buttons</h2>
+    <button class="btn style--primary size--normal">Hello people</button>
+    <br>
+    <br>
+    <div class="btn style--primary size--normal state--loading">Hello</div>
+    <br>
+    <br>
+    <button class="btn style--primary size--normal state--disabled">Hello</button>
+    <br>
+    <br>
+    <button class="btn style--primary size--normal wide">Hello</button>
+    <br>
+    <br>
+    <button class="btn style--success size--normal wide">Hello</button>
+
+    <h2>Inputs</h2>
+
+    <input type="text" class="input size--normal" placeholder="Hello people">
+    <br>
+    <br>
+    <div class="form__row">
+        <input type="text" class="input size--normal state--error" placeholder="Hello people">
+      </div>
+    </div>
+
+  </div>
+{% endblock %}
+

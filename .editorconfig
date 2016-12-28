@@ -12,6 +12,6 @@ charset = utf-8
 indent_style = tab
 
 # 1 tab indentation
-[*.{js,scss,sass,jade,pug,css,styl,json,yml,vue}]
+[*.{js,scss,sass,jade,pug,css,styl,json,yml,vue,twig}]
 indent_style = space
 indent_size = 2

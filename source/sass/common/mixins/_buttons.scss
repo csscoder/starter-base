@@ -9,34 +9,45 @@
   vertical-align: top;
   border-right: 0;
   cursor: pointer;
-  font-family: inherit;
   border: none;
   outline: none;
-  @extend %tr-bgcolor;
+  position: relative;
+  @extend %tr-all;
+  @extend %noselect;
+  &.wide {
+    width: 100%;
+  }
 }
 
-%btn-normal {
+%btn-size-default {
   line-height: 1.4;
   font-size: 20px;
-  border: 2px solid;
-  padding: 10px 20px;
+  padding: em(14 20, 20);
 }
 
-%btn-green {
+%btn-color-default {
   $mainColor: #71cc00;
   color: #fff;
   background-color: $mainColor;
-  border-color: darken($mainColor, 10);
   &:hover {
     background-color: darken($mainColor, 5);
   }
   &:active {
     background-color: darken($mainColor, 10);
   }
+  &.state--loading,
+  &.state--disabled {
+    background-color: $mainColor !important;
+    cursor: not-allowed;
+  }
 }
 
-%loading-button {
-  color: transparent;
+%bnt-disable {
+  opacity: .5 !important;
+}
+
+%loading-button-default {
+  color: transparent !important;
   &:after {
     opacity: 1;
     content: '';
@@ -46,6 +57,7 @@
     left: 0;
     top: 0;
     background-position: 50% 50%;
+    background-repeat: no-repeat;
     @extend %image-loading;
   }
 }

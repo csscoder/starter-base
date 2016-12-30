@@ -22,7 +22,6 @@ const plumber = require('gulp-plumber');
 const notify = require('gulp-notify');
 const sftp = require('gulp-sftp');
 
-
 const mainConfig = require('./.appConfig');
 const pkg = require('./package.json');
 
@@ -44,6 +43,11 @@ const del = require('del');
 gulp.task('del', function (cb) {
   return del([mainConfig.build + '**/*'], cb);
 });
+
+gulp.task('del-sprite', function (cb) {
+  return del([mainConfig.build + '/img/sprite/'], cb);
+});
+
 
 // html
 //******************************************
@@ -77,13 +81,67 @@ gulp.task('nunjucks', () => {
 // compile SASS
 //******************************************
 const sass = require('gulp-sass');
-const postcss = require('gulp-postcss');
+const postcssGulp = require('gulp-postcss');
+const postcss = require('postcss');
 const autoprefixer = require('autoprefixer');
 const mqpacker = require('css-mqpacker');
 const cssnano = require('cssnano');
 const lost = require('lost');
+const sprites = require('postcss-sprites');
+const spriteOption = {
+  stylesheetPath: mainConfig.sass.dest,
+  spritePath: mainConfig.img.dest,
+  filterBy: function (image) {
+    if (!/sprite\/[a-zA-Z\d\S\s]*\.png$/.test(image.url)) {
+      return Promise.reject();
+    }
+    return Promise.resolve();
+  },
+  retina: true,
+  spritesmith: {
+    padding: 10
+  },
+  hooks: {
+    onUpdateRule: function (rule, token, image) {
+      let backgroundSizeX = (image.spriteWidth / image.coords.width) * 100;
+      let backgroundSizeY = (image.spriteHeight / image.coords.height) * 100;
+      let backgroundPositionX = (image.coords.x / (image.spriteWidth - image.coords.width)) * 100;
+      let backgroundPositionY = (image.coords.y / (image.spriteHeight - image.coords.height)) * 100;
 
-let postCSS = [autoprefixer({browsers: mainConfig.autoprefixer}), lost];
+      backgroundSizeX = isNaN(backgroundSizeX) ? 0 : backgroundSizeX;
+      backgroundSizeY = isNaN(backgroundSizeY) ? 0 : backgroundSizeY;
+      backgroundPositionX = isNaN(backgroundPositionX) ? 0 : backgroundPositionX;
+      backgroundPositionY = isNaN(backgroundPositionY) ? 0 : backgroundPositionY;
+
+      let backgroundImage = postcss.decl({
+        prop: 'background-image',
+        value: 'url(' + image.spriteUrl + ')'
+      });
+
+      let backgroundSize = postcss.decl({
+        prop: 'background-size',
+        value: backgroundSizeX + '% ' + backgroundSizeY + '%'
+      });
+
+      let backgroundPosition = postcss.decl({
+        prop: 'background-position',
+        value: backgroundPositionX + '% ' + backgroundPositionY + '%'
+      });
+
+      let backgroundRepeat = postcss.decl({
+        prop: 'background-repeat',
+        value: 'no-repeat'
+      });
+
+      rule.insertAfter(token, backgroundImage);
+      rule.insertAfter(backgroundImage, backgroundPosition);
+      rule.insertAfter(backgroundPosition, backgroundSize);
+      rule.insertAfter(backgroundRepeat, backgroundRepeat);
+    }
+  }
+};
+
+let postCSS = [autoprefixer({browsers: mainConfig.autoprefixer}), lost, sprites(spriteOption)];
 let postCSSCompress = postCSS.concat(mqpacker(), cssnano());
 
 gulp.task('sass', () => {
@@ -98,7 +156,7 @@ gulp.task('sass', () => {
         }))
     )
     .pipe(sass())
-    .pipe(gulpif(args.compress, postcss(postCSSCompress), postcss(postCSS)))
+    .pipe(gulpif(args.compress, postcssGulp(postCSSCompress), postcssGulp(postCSS)))
     .pipe(gulpif(args.dev, sourcemaps.write({sourceRoot: './source/sass/'})))
     .pipe(gulp.dest(mainConfig.sass.dest))
     .pipe(gulpif(args.verbose, fileSize()))
@@ -191,7 +249,8 @@ gulp.task('default', function () {
       'sass',
       'jsLibs',
       'jsApp'
-    ]
+    ],
+    'del-sprite'
   );
 });
 
@@ -211,6 +270,7 @@ gulp.task('deploy', function () {
       'jsLibs',
       'jsApp'
     ],
+    'del-sprite',
     'sftp'
   );
 });

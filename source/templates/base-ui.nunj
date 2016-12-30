@@ -39,6 +39,14 @@
     <div class="form__row">
       <input type="text" class="input size--normal state--error" placeholder="Hello people!">
     </div>
+    <br>
+    <br>
+    <h2>Test sprite with retina</h2>
+    <div class="apple"></div>
+    <div class="apple style--add-zoom"></div>
+    <br>
+    <br>
+    <div class="audi"></div>
   </div>
 {% endblock %}
 

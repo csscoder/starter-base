@@ -13,3 +13,27 @@
   line-height: 1.4;
 }
 
+//***************************************
+// test spite (need remove)
+//***************************************
+.apple {
+  background: url('../img/sprite/apple.png') 0 0 no-repeat;
+  width: em(92px);
+  height: em(111px);
+  @include retina() {
+    background-image: url('../img/sprite/apple@2x.png')
+  }
+
+  &.style--add-zoom {
+    font-size: 30px;
+  }
+}
+
+.audi {
+  background: url('../img/sprite/audi.png') 0 0 no-repeat;
+  width: em(150px);
+  height: em(88px);
+  @include retina() {
+    background-image: url('../img/sprite/audi@2x.png')
+  }
+}

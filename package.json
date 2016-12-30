@@ -33,10 +33,12 @@
     "gulp-filesize": "0.0.6",
     "gulp-if": "2.0.2",
     "gulp-notify": "^2.2.0",
-    "gulp-plumber": "^1.1.0",
+    "gulp-nunjucks-render": "2.0.0",
+    "gulp-plumber": "1.1.0",
     "gulp-postcss": "6.2.0",
     "gulp-print": "2.0.1",
     "gulp-sass": "3.0.0",
+    "gulp-sftp": "0.1.5",
     "gulp-sourcemaps": "1.9.1",
     "gulp-svg-symbols": "2.0.2",
     "gulp-swig": "0.8.0",
@@ -50,8 +52,7 @@
     "run-sequence": "1.2.2",
     "stylelint": "7.7.0",
     "yargs": "6.5.0",
-    "gulp-sftp": "^0.1.5",
-    "gulp-nunjucks-render": "2.0.0"
+    "postcss-sprites": "4.1.1"
   },
   "dependencies": {
     "vue": "^2.1.7"

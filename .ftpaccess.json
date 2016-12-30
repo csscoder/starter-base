@@ -1,0 +1,8 @@
+{
+  "user": "test",
+  "pass": "test",
+  "host": "12.12.12.12",
+  "port": 21,
+  "rootPath": "/www/public",
+  "site": "http://csscoder.pro/"
+}

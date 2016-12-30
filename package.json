@@ -6,10 +6,17 @@
   "description": "Created by CSSCODER(Alexander Zidyganov)",
   "scripts": {
     "start": "gulp",
-    "dev": "gulp dev",
-    "compress": "gulp --compress"
+    "dev": "gulp dev"
   },
-  "author": "Alexander Zidyganov",
+  "author": {
+    "name": "Alexander Zidyganov",
+    "url": "http://csscoder.pro",
+    "email": "alex@csscoder.pro"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/csscoderRU/starter-base.git"
+  },
   "license": "MIT",
   "devDependencies": {
     "autoprefixer": "6.5.4",

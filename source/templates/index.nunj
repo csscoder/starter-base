@@ -21,4 +21,9 @@
     <li><a href="main.html">Main page</a></li>
     <li><a href="base-ui.html">Base UI</a></li>
   </ul>
+  <br>
+  <br>
+  <br>
+  <br>
+  <a href="{{ urlRepo }}" target="_blank">Go to repository</a>
 {% endblock %}

@@ -59,7 +59,8 @@ const dataToTemplates = {
   project: pkg.title,
   path: '',
   ver: Math.round(+new Date()),
-  lang: 'ru'
+  lang: 'ru',
+  urlRepo: pkg.repository.url
 };
 
 gulp.task('nunjucks', () => {

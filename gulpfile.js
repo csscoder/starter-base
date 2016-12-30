@@ -21,6 +21,7 @@ const uglify = require('gulp-uglify');
 const plumber = require('gulp-plumber');
 const notify = require('gulp-notify');
 const sftp = require('gulp-sftp');
+const path = require('path');
 
 const mainConfig = require('./.appConfig');
 const pkg = require('./package.json');
@@ -45,7 +46,7 @@ gulp.task('del', function (cb) {
 });
 
 gulp.task('del-sprite', function (cb) {
-  return del([mainConfig.build + '/img/sprite/'], cb);
+  return del([mainConfig.build + '/img/sprite/', mainConfig.build + '/img/svg-sprite-template.scss'], cb);
 });
 
 
@@ -187,6 +188,24 @@ gulp.task('jsApp', () => {
     .pipe(connect.reload());
 });
 
+// SVG Symbols
+//******************************************
+const svgSymbols = require('gulp-svg-symbols');
+gulp.task('svg-sprites', function () {
+  return gulp.src(mainConfig.src + '/img/svgSprite/*.svg')
+    .pipe(svgSymbols({
+      svgClassname: 'svg-sprite',
+      className: '.svg-%f',
+      id: 'svg-%f',
+      templates: [
+        path.join(__dirname, 'source/img/svgSprite/svg-sprite-template.scss'),
+        path.join(__dirname, 'source/img/svgSprite/svg-sprite-template.js')
+      ]
+    }))
+    .pipe(gulp.dest(mainConfig.img.dest));
+});
+
+
 // Copy
 //******************************************
 gulp.task('fonts', () => {
@@ -220,6 +239,7 @@ gulp.task('dev', () => {
   args.verbose = true;
 
   return runSequence(
+    'svg-sprites',
     [
       'nunjucks',
       'fonts',
@@ -241,6 +261,7 @@ gulp.task('default', function () {
 
   return runSequence(
     'del',
+    'svg-sprites',
     [
       'fonts',
       'img',
@@ -261,6 +282,7 @@ gulp.task('deploy', function () {
 
   return runSequence(
     'del',
+    'svg-sprites',
     [
       'fonts',
       'img',

@@ -47,6 +47,17 @@
     <br>
     <br>
     <div class="audi"></div>
+    <br>
+    <h2>Test svg Sprite</h2>
+    <svg role="img" class="svg-ico-heart">
+      <use xlink:href="#svg-ico-heart"></use>
+    </svg>
+    <br>
+    <svg role="img" class="svg-ico-heart  style--add-zoom">
+      <use xlink:href="#svg-ico-heart"></use>
+    </svg>
+    <br>
+    <br>
   </div>
 {% endblock %}
 

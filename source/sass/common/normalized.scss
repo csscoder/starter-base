@@ -118,3 +118,8 @@ html {
 [v-cloak] {
   display: none
 }
+
+// hide svgSprite
+.svg-sprite {
+  @extend %hidden;
+}

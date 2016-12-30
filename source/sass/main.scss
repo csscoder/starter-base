@@ -3,9 +3,16 @@
 @import "common/mixins/mixin";
 @import "ui";
 
+// if we use svgSprite
+@import "../../build/img/svg-sprite-template";
+
 // include fonts
 @include font-face('HeliosCond', '../fonts/HeliosCond-Regular/HeliosCond-Regular', 400, normal, woff2 woff);
 @include font-face('HeliosCond', '../fonts/HeliosCond-Bold/HeliosCond-Bold', 700, normal, woff2 woff);
+
+.l-html, .l-body {
+  height: 100%;
+}
 
 .l-body {
   font-family: 'HeliosCond', sans-serif;
@@ -35,5 +42,14 @@
   height: em(88px);
   @include retina() {
     background-image: url('../img/sprite/audi@2x.png')
+  }
+}
+
+//***************************************
+// test svg sprite
+//***************************************
+.svg-ico-heart {
+  &.style--add-zoom {
+    font-size: 30px;
   }
 }

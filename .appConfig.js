@@ -21,8 +21,8 @@ module.exports = {
   },
 
   html: {
-    src: src + '/templates/*.twig',
-    watch: src + '/templates/**/*.twig',
+    src: src + '/templates/*.nunj',
+    watch: src + '/templates/**/*.nunj',
     dest: build
   },
 

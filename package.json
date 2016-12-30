@@ -1,5 +1,5 @@
 {
-  "name": "balnk",
+  "name": "blank",
   "title": "Blank simple",
   "version": "0.0.1",
   "clientTimeZone": "Europe/Moscow",
@@ -37,12 +37,14 @@
     "list-selectors": "2.0.0",
     "lost": "7.1.1",
     "moment-timezone": "0.5.11",
-    "plumber": "^0.4.8",
+    "plumber": "0.4.8",
     "postcss-reporter": "3.0.0",
     "postcss-scss": "0.4.0",
     "run-sequence": "1.2.2",
     "stylelint": "7.7.0",
-    "yargs": "6.5.0"
+    "yargs": "6.5.0",
+    "gulp-sftp": "^0.1.5",
+    "gulp-nunjucks-render": "2.0.0"
   },
   "dependencies": {
     "vue": "^2.1.7"

@@ -1,10 +1,20 @@
-{% extends 'layouts/_default.twig' %}
+{% extends 'layouts/_default.nunj' %}
 
-{% block meta-title %}Форма{% endblock %}
-{% block meta-description %}Description{% endblock %}
-{% block meta-keywords %}Keywords{% endblock %}
-{% block og-url %}https://google.com{% endblock %}
-{% block og-img %}https://google.com{% endblock %}
+{% set metaTitle = 'Base ui: ' +  project  %}
+{% set metaDescription = 'You can see base ui elements used on the project.' %}
+
+{% set oggTitle = 'Base ui: ' +  project %}
+{% set oggDescription = 'You can see base ui elements used on the project.' %}
+{% set oggType = 'website' %}
+{% set ogUrl = 'http://dev.csscoder.pro/blank/' %}
+{% set ogImage = 'http://dev.csscoder.pro/NO_REMOVE/csscoder-userpic.png' %}
+{% set ogSiteName = 'CSSCODER.PRO' %}
+
+{% set twitterUserpic = 'http://dev.csscoder.pro/NO_REMOVE/csscoder-userpic.png' %}
+{% set twitterSite = '@csscoder' %}
+{% set twitterCard = 'summary' %}
+{% set twitterTitle = 'Base ui: ' +  project %}
+{% set twitterDecription = 'You can see base ui elements used on the project.' %}
 
 {% block content %}
   <div style="padding: 30px">
@@ -22,9 +32,7 @@
     <br>
     <br>
     <button class="btn style--success size--normal wide">Hello</button>
-
     <h2>Inputs</h2>
-
     <input type="text" class="input size--normal" placeholder="Hello people">
     <br>
     <br>
@@ -32,6 +40,5 @@
       <input type="text" class="input size--normal state--error" placeholder="Hello people!">
     </div>
   </div>
-
 {% endblock %}
 

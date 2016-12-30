@@ -1,0 +1,24 @@
+{% extends 'layouts/_pages.nunj' %}
+
+{% set metaTitle = 'Pages project: ' +  project  %}
+{% set metaDescription = 'Home page for current project, link to all page project.' %}
+
+{% set oggTitle = 'Pages project: ' +  project %}
+{% set oggDescription = 'Home page for current project, link to all page project.' %}
+{% set oggType = 'website' %}
+{% set ogUrl = 'http://dev.csscoder.pro/blank/' %}
+{% set ogImage = 'http://dev.csscoder.pro/NO_REMOVE/csscoder-userpic.png' %}
+{% set ogSiteName = 'CSSCODER.PRO' %}
+
+{% set twitterUserpic = 'http://dev.csscoder.pro/NO_REMOVE/csscoder-userpic.png' %}
+{% set twitterSite = '@csscoder' %}
+{% set twitterCard = 'summary' %}
+{% set twitterTitle = 'Pages project: ' +  project %}
+{% set twitterDecription = 'Home page for current project, link to all page project.' %}
+
+{% block content %}
+  <ul>
+    <li><a href="main.html">Main page</a></li>
+    <li><a href="base-ui.html">Base UI</a></li>
+  </ul>
+{% endblock %}

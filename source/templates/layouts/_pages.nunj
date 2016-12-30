@@ -4,8 +4,22 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=1024">
   <meta http-equiv="Cache-Control" content="no-cache">
-  <meta http-equiv="x-ua-compatible" content="ie=edge">
-  <title>All pages project | {{ project }}</title>
+  {% if metaTitle %}<title>{{ metaTitle }}</title> {% else %} <title>Title {{ project }}</title> {% endif %}
+  {% if metaDescription %}<meta name="description" content="{{ metaDescription }}"> {% endif %}
+  {% if metaKeywords %}<meta name="keywords" content="{{ metaKeywords }}"> {% endif %}
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  {% if oggTitle %}<meta property="og:title" content="{{ oggTitle }}">{% endif %}
+  {% if oggDescription %}<meta property="og:description" content="{{ oggDescription }}"> {% endif %}
+  {% if oggType %}<meta property="og:type" content="{{ oggType }}"> {% else %} <meta property="og:type" content="website"> {% endif %}
+  {% if ogUrl %}<meta property="og:url" content="{{ ogUrl }}"> {% endif %}
+  {% if ogImage %}<meta property="og:image" content="{{ ogImage }}"> {% endif %}
+  {% if ogSiteName %}<meta content="{{ ogSiteName }}" property="og:site_name" /> {% endif %}
+  {% if twitterUserpic %}<meta content="{{ twitterUserpic }}" name="twitter:image:src" /> {% endif %}
+  {% if twitterSite %}<meta content="{{ twitterSite }}" name="twitter:site" />{% endif %}
+  {% if twitterCard %}<meta content="{{ twitterCard }}" name="twitter:card" />{% endif %}
+  {% if twitterTitle %}<meta content="{{ twitterTitle }}" name="twitter:title" />{% endif %}
+  {% if twitterDecription %}<meta content="{{ twitterDecription }}" name="twitter:description" />{% endif %}
+
   <style>body {
       font-family: Helvetica, Arial, 'sans-serif';
       font-size: 62.5%;

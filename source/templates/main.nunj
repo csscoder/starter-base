@@ -1,0 +1,7 @@
+{% extends 'layouts/_default.nunj' %}
+
+{% set layout_class = 'main-page' %}
+{% block content %}
+
+{% endblock %}
+

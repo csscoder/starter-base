@@ -3,6 +3,7 @@
 // gulp --compress   (css and js file compress)
 // gulp scss-selectors
 // gulp scss-lint
+// gulp deploy
 
 // core
 //******************************************
@@ -19,6 +20,7 @@ const concat = require('gulp-concat');
 const uglify = require('gulp-uglify');
 const plumber = require('gulp-plumber');
 const notify = require('gulp-notify');
+const sftp = require('gulp-sftp');
 
 
 const mainConfig = require('./.appConfig');
@@ -49,6 +51,7 @@ gulp.task('del', function (cb) {
 const moment = require('moment-timezone');
 const time = moment().tz(pkg.clientTimeZone).format('DD MMM YYYY, HH:mm');
 const swig = require('gulp-swig');
+const nunjucksRender = require('gulp-nunjucks-render');
 
 const dataToTemplates = {
   time: time,
@@ -59,12 +62,13 @@ const dataToTemplates = {
   lang: 'ru'
 };
 
-gulp.task('swig', () => {
+gulp.task('nunjucks', () => {
   gulp.src(mainConfig.html.src)
     .pipe(gulpif(args.dev, plumber({errorHandler: notify.onError('Error: <%= error.message %>')})))
     .pipe(data(dataToTemplates))
-    .pipe(swig({defaults: {cache: false}}))
-
+    .pipe(nunjucksRender({
+      path: './source/templates'
+    }))
     .pipe(gulp.dest(mainConfig.html.dest))
     .pipe(connect.reload());
 });
@@ -148,7 +152,7 @@ gulp.task('watch-files', () => {
   gulp.watch(mainConfig.img.src, ['img']);
   gulp.watch(mainConfig.js.src, ['jsApp']);
   gulp.watch(mainConfig.toRoot.src, ['toRoot']);
-  gulp.watch(mainConfig.html.watch, ['swig']);
+  gulp.watch(mainConfig.html.watch, ['nunjucks']);
 });
 gulp.task('dev', () => {
 
@@ -158,7 +162,7 @@ gulp.task('dev', () => {
 
   return runSequence(
     [
-      'swig',
+      'nunjucks',
       'fonts',
       'img',
       'toRoot',
@@ -182,12 +186,49 @@ gulp.task('default', function () {
       'fonts',
       'img',
       'toRoot',
-      'swig',
+      'nunjucks',
       'sass',
       'jsLibs',
       'jsApp'
     ]
   );
+});
+
+// deploy task
+//******************************************
+gulp.task('deploy', function () {
+  args.compress = true;
+
+  return runSequence(
+    'del',
+    [
+      'fonts',
+      'img',
+      'toRoot',
+      'nunjucks',
+      'sass',
+      'jsLibs',
+      'jsApp'
+    ],
+    'sftp'
+  );
+});
+
+// SFTP deploy
+//******************************************
+const access = require('./.ftpaccess.json');
+gulp.task('sftp', function () {
+  return gulp.src('./build/**/*')
+    .pipe(sftp({
+      host: access.host,
+      port: access.port,
+      user: access.user,
+      pass: access.pass,
+      remotePath: access.rootPath + pkg.name
+    }))
+    .on('finish', function () {
+      console.log(access.site + pkg.name + '/');
+    });
 });
 
 // check code

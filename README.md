@@ -23,6 +23,10 @@ Installing the necessary packages GULP.js
 
 You can download file from Github.com  https://github.com/csscoderRU/starter-base
 
+Open folder project in terminal.app and install dependencies
+
+    npm install
+
 ### Main command gulp
 Open folder project in terminal.app
 

@@ -48,8 +48,19 @@
 //***************************************
 // test svg sprite
 //***************************************
+[class*=svg-ico] use {
+  @extend %tr-all;
+}
 .svg-ico-heart {
   &.style--add-zoom {
     font-size: 30px;
+  }
+  &.style--add-zoom2 {
+    font-size: 60px;
+  }
+  &:hover {
+    use {
+      fill: red;
+    }
   }
 }

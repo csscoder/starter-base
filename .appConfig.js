@@ -6,7 +6,7 @@ module.exports = {
   src: src,
 
   img: {
-    src: src + '/img/**/*',
+    src: [src + '/img/**/*'],
     dest: build + '/img'
   },
 

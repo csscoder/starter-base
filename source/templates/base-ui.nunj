@@ -57,6 +57,10 @@
       <use xlink:href="#svg-ico-heart"></use>
     </svg>
     <br>
+    <svg role="img" class="svg-ico-heart  style--add-zoom2">
+      <use xlink:href="#svg-ico-heart"></use>
+    </svg>
+    <br>
     <br>
   </div>
 {% endblock %}

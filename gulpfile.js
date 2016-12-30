@@ -46,7 +46,11 @@ gulp.task('del', function (cb) {
 });
 
 gulp.task('del-sprite', function (cb) {
-  return del([mainConfig.build + '/img/sprite/', mainConfig.build + '/img/svg-sprite-template.scss'], cb);
+  return del([
+    mainConfig.build + '/img/sprite/',
+    mainConfig.build + '/img/svgSprite',
+    mainConfig.build + '/img/svg-sprite-template.scss'
+  ], cb);
 });
 
 

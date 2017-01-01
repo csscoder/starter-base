@@ -94,9 +94,7 @@
   border-color: #ccc;
   color: #000;
   @include placeholder() {
-    @include placeholder() {
-      color: rgba(#999, .4);
-    }
+    color: rgba(#999, .4);
   }
   &:focus {
     border-color: #0071bb;

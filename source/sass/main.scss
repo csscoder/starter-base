@@ -64,3 +64,17 @@
     }
   }
 }
+
+.svg-ico-build {
+  &.style--add-zoom {
+    font-size: 30px;
+  }
+  &.style--add-zoom2 {
+    font-size: 60px;
+  }
+  &:hover {
+    use {
+      fill: green;
+    }
+  }
+}

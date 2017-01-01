@@ -62,6 +62,19 @@
     </svg>
     <br>
     <br>
+    <svg role="img" class="svg-ico-build">
+      <use xlink:href="#svg-ico-build"></use>
+    </svg>
+    <br>
+    <svg role="img" class="svg-ico-build  style--add-zoom">
+      <use xlink:href="#svg-ico-build"></use>
+    </svg>
+    <br>
+    <svg role="img" class="svg-ico-build  style--add-zoom2">
+      <use xlink:href="#svg-ico-build"></use>
+    </svg>
+    <br>
+    <br>
   </div>
 {% endblock %}
 

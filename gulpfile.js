@@ -104,7 +104,7 @@ const spriteOption = {
   },
   retina: true,
   spritesmith: {
-    padding: 10
+    padding: 50
   },
   hooks: {
     onUpdateRule: function (rule, token, image) {

@@ -59,7 +59,6 @@ gulp.task('del-sprite', function (cb) {
 //const moment = require('moment');
 const moment = require('moment-timezone');
 const time = moment().tz(pkg.clientTimeZone).format('DD MMM YYYY, HH:mm');
-const swig = require('gulp-swig');
 const nunjucksRender = require('gulp-nunjucks-render');
 
 const dataToTemplates = {
@@ -170,27 +169,26 @@ gulp.task('sass', () => {
 
 // JavaScripts
 //******************************************
-const jsLibs = require('./jsLibs.json').libs;
-const babel = require('gulp-babel');
+import statsLogger from 'webpack-stats-logger';
+import makeWebpackConfig  from './webpack.conf.js';
+import webpack from 'webpack';
 
-gulp.task('jsLibs', () => {
-  return gulp.src(jsLibs)
-    .pipe(concat('libs.js'))
-    .pipe(gulpif(args.compress, uglify()))
-    .pipe(gulp.dest(mainConfig.js.dest))
-    .pipe(connect.reload());
-});
-
-gulp.task('jsApp', () => {
-  return gulp.src(mainConfig.js.src)
-    .pipe(gulpif(args.dev, plumber({errorHandler: notify.onError('Error: <%= error.message %>')})))
-    .pipe(babel({
-      presets: ['es2015']
-    }))
-    .pipe(gulpif(args.compress, uglify()))
-    .pipe(gulp.dest(mainConfig.js.dest))
-    .pipe(connect.reload());
-});
+function runWebpack(watch = false) {
+  return function (callback) {
+    const webpackConfig = makeWebpackConfig({
+      watch,
+      debug: args.dev,
+      sourcemaps: args.dev
+    });
+    return webpack(webpackConfig, (error, stats) => {
+      statsLogger(error, stats);
+      if (watch === false) {
+        callback();
+      }
+    });
+  };
+}
+gulp.task('jsApp', runWebpack(args.dev, connect.reload));
 
 // SVG Symbols
 //******************************************
@@ -226,6 +224,13 @@ gulp.task('toRoot', () => {
 });
 
 
+// refreshPage
+//******************************************
+gulp.task('reloadJS', function () {
+  gulp.src(mainConfig.js.watch)
+    .pipe(connect.reload());
+});
+
 // dev tasks
 //******************************************
 gulp.task('watch-files', () => {
@@ -233,6 +238,7 @@ gulp.task('watch-files', () => {
   gulp.watch(mainConfig.fonts.src, ['fonts']);
   gulp.watch(mainConfig.img.src, ['img']);
   gulp.watch(mainConfig.js.src, ['jsApp']);
+  gulp.watch(mainConfig.js.watch, ['reloadJS']);
   gulp.watch(mainConfig.toRoot.src, ['toRoot']);
   gulp.watch(mainConfig.html.watch, ['nunjucks']);
 });
@@ -250,8 +256,7 @@ gulp.task('dev', () => {
       'img',
       'toRoot',
       'sass',
-      'jsApp',
-      'jsLibs'
+      'jsApp'
     ],
     'watch-files',
     'connect'
@@ -272,7 +277,6 @@ gulp.task('default', function () {
       'toRoot',
       'nunjucks',
       'sass',
-      'jsLibs',
       'jsApp'
     ],
     'del-sprite'
@@ -293,7 +297,6 @@ gulp.task('deploy', function () {
       'toRoot',
       'nunjucks',
       'sass',
-      'jsLibs',
       'jsApp'
     ],
     'del-sprite',

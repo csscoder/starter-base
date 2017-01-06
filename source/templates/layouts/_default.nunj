@@ -48,7 +48,7 @@
 </div>
 <!-- page finish -->
 
-<script src="{{ path }}js/libs.js?{{ ver }}"></script>
+<script src="{{ path }}js/common.js?{{ ver }}"></script>
 <script src="{{ path }}js/app.js?{{ ver }}"></script>
 </body>
 

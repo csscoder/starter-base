@@ -35,8 +35,7 @@
   <meta name="msapplication-TileColor" content="#ffffff">
   <meta name="msapplication-TileImage" content="{{ path }}img/favicon/ms-icon-144x144.png">
   <meta name="theme-color" content="#ffffff">
-  <meta name="viewport"
-        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <script src="{{ path }}img/svg-sprite-template.js?{{ ver }}"></script>
   <link rel="stylesheet" href="{{ path }}css/main.css?{{ ver }}" media="all">
 </head>

@@ -22,6 +22,8 @@ const plumber = require('gulp-plumber');
 const notify = require('gulp-notify');
 const sftp = require('gulp-sftp');
 const path = require('path');
+const open = require('gulp-open');
+const ip = require('ip');
 
 const mainConfig = require('./.appConfig');
 const pkg = require('./package.json');
@@ -36,6 +38,11 @@ gulp.task('connect', function () {
     port: 1981,
     livereload: true
   });
+});
+
+gulp.task('open', function(){
+  gulp.src('')
+    .pipe(open({uri: 'http://localhost:1981', app: 'Google Chrome'}));
 });
 
 // Clean project
@@ -61,20 +68,22 @@ const moment = require('moment-timezone');
 const time = moment().tz(pkg.clientTimeZone).format('DD MMM YYYY, HH:mm');
 const nunjucksRender = require('gulp-nunjucks-render');
 
-const dataToTemplates = {
-  time: time,
-  timeZone: pkg.clientTimeZone,
-  project: pkg.title,
-  path: '',
-  ver: Math.round(+new Date()),
-  lang: 'ru',
-  urlRepo: pkg.repository.url
-};
 
 gulp.task('nunjucks', () => {
+
   gulp.src(mainConfig.html.src)
     .pipe(gulpif(args.dev, plumber({errorHandler: notify.onError('Error: <%= error.message %>')})))
-    .pipe(data(dataToTemplates))
+    .pipe(data({
+      time: time,
+      timeZone: pkg.clientTimeZone,
+      project: pkg.title,
+      path: '',
+      ver: Math.round(+new Date()),
+      lang: 'ru',
+      urlRepo: pkg.repository.url,
+      IP: ip.address(),
+      develop: args.dev
+    }))
     .pipe(nunjucksRender({
       path: './source/templates'
     }))
@@ -259,7 +268,8 @@ gulp.task('dev', () => {
       'jsApp'
     ],
     'watch-files',
-    'connect'
+    'connect',
+    'open'
   );
 });
 

@@ -26,4 +26,8 @@
   <br>
   <br>
   <a href="{{ urlRepo }}" target="_blank">Go to repository</a>
+  <br>
+  {% if develop %}
+    <small class="view-ip">Local IP {{ IP }}:1981</small>
+  {% endif %}
 {% endblock %}

@@ -43,7 +43,6 @@
     "gulp-sourcemaps": "1.9.1",
     "gulp-svg-symbols": "2.0.2",
     "gulp-uglify": "2.0.0",
-    "happypack": "3.0.2",
     "list-selectors": "2.0.0",
     "lost": "7.1.1",
     "moment-timezone": "0.5.11",
@@ -61,6 +60,9 @@
     "yargs": "6.5.0"
   },
   "dependencies": {
+    "gulp-open": "^2.0.0",
+    "happypack": "3.0.2",
+    "ip": "^1.1.4",
     "jquery": "3.1.1",
     "vue": "^2.1.7"
   }

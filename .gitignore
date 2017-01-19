@@ -5,3 +5,4 @@
 /.happypack/
 .DS_Store
 yarn.lock
+/.ftpaccess.json

@@ -57,12 +57,12 @@
     "stylelint": "7.7.0",
     "webpack": "1.14.0",
     "webpack-stats-logger": "1.0.1",
-    "yargs": "6.5.0"
+    "yargs": "6.5.0",
+    "ip": "^1.1.4",
+    "gulp-open": "^2.0.0"
   },
   "dependencies": {
-    "gulp-open": "^2.0.0",
     "happypack": "3.0.2",
-    "ip": "^1.1.4",
     "jquery": "3.1.1",
     "vue": "^2.1.7"
   }

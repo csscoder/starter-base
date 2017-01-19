@@ -23,6 +23,11 @@ Installing the necessary packages GULP.js
 
 You can download file from Github.com  https://github.com/csscoderRU/starter-base
 
+### Rename file for SFTP access
+Rename file .ftpaccess-example.json to .ftpaccess.json
+
+### Install dependencies
+
 Open folder project in terminal.app and install dependencies
 
     npm install

@@ -10,6 +10,22 @@
 @include font-face('HeliosCond', '../fonts/HeliosCond-Regular/HeliosCond-Regular', 400, normal, woff2 woff);
 @include font-face('HeliosCond', '../fonts/HeliosCond-Bold/HeliosCond-Bold', 700, normal, woff2 woff);
 
+//***************************************
+// Support
+//***************************************
+.hide,
+.slick-slide .hide {
+  @extend %hide;
+}
+
+.hidden {
+  @extend %hidden;
+}
+
+//***************************************
+// Layout
+//***************************************
+
 .l-html, .l-body {
   height: 100%;
 }

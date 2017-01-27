@@ -1,6 +1,6 @@
 const path = require('path');
 const webpack = require('webpack');
-const NpmInstallPlugin = require('npm-install-webpack-plugin');
+// const NpmInstallPlugin = require('npm-install-webpack-plugin');
 const HappyPack = require('happypack');
 
 export default function makeWebpackConfig({
@@ -60,7 +60,7 @@ export default function makeWebpackConfig({
         NODE_ENV: JSON.stringify((debug) ? 'develop' : 'production'),
       })
     ].concat(debug ? [
-        new NpmInstallPlugin({saveDev: true}),
+        // new NpmInstallPlugin({saveDev: true}),
         new webpack.HotModuleReplacementPlugin()
       ] : [
         new webpack.optimize.DedupePlugin(),

@@ -42,7 +42,7 @@
 <!-- page start -->
 <div class="page">
   {% block content %}{% endblock %}
-  <div class="svg-box hide"></div>
+  <div class="svg-box"></div>
   <script src="{{ path }}js/svg-sprite-template.js" defer></script>
 </div>
 <!-- page finish -->

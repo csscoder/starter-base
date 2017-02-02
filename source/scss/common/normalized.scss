@@ -118,6 +118,6 @@ b, strong {
 }
 
 // hide svgSprite
-.svg-sprite {
-  @extend %hidden;
+.svg-box {
+  @extend %hide;
 }

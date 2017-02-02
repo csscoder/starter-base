@@ -1,15 +1,11 @@
 // JavaScripts
 //******************************************
-import statsLogger from 'webpack-stats-logger';
 import gulp from 'gulp';
 import path from 'path';
-import changed from 'gulp-changed';
-import debug from 'gulp-debug';
 
 import webpack from 'webpack';
 import gulpWebpack from 'webpack-stream';
 
-import makeWebpackConfig  from '../webpack.conf.js';
 
 const args = require('yargs').argv;
 

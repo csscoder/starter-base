@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="{{ lang }}" class="l-html">
-
 <head>
   <meta charset="utf-8">
   {% if metaTitle %}<title>{{ metaTitle }}</title> {% else %} <title>Title {{ project }}</title> {% endif %}
@@ -36,19 +35,20 @@
   <meta name="msapplication-TileImage" content="{{ path }}img/favicon/ms-icon-144x144.png">
   <meta name="theme-color" content="#ffffff">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <script src="{{ path }}img/svg-sprite-template.js?{{ ver }}"></script>
-  <link rel="stylesheet" href="{{ path }}css/main.css?{{ ver }}" media="all">
+  <link rel="stylesheet" href="{{ path }}css/main.css" media="all">
 </head>
 
 <body class="l-body {{ layout_class }}">
 <!-- page start -->
 <div class="page">
   {% block content %}{% endblock %}
+  <div class="svg-box hide"></div>
+  <script src="{{ path }}js/svg-sprite-template.js" defer></script>
 </div>
 <!-- page finish -->
 
-<script src="{{ path }}js/common.js?{{ ver }}"></script>
-<script src="{{ path }}js/app.js?{{ ver }}"></script>
+<script src="{{ path }}js/common.js"></script>
+<script src="{{ path }}js/app.js"></script>
 </body>
 
 </html>

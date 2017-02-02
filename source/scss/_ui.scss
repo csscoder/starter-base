@@ -1,4 +1,4 @@
-@import "common/mixins/mixin";
+// @import "common/mixins/mixin";
 
 //***************************************
 // Buttons
@@ -51,6 +51,7 @@
 
 .btn {
   @extend %btn;
+  @extend %noselect;
 
   &.style--primary {
     @extend %btn-blue;

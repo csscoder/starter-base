@@ -2,6 +2,6 @@
 
 {% set layout_class = 'main-page' %}
 {% block content %}
-
+<h1>Hello3124</h1>
 {% endblock %}
 

@@ -2,7 +2,6 @@ module.exports = {
   "rules": {
     // color
     "color-hex-case": "lower",
-    "color-hex-length": "short",
     "color-no-invalid-hex": true,
 
     // Font family
@@ -13,7 +12,6 @@ module.exports = {
     "function-calc-no-unspaced-operator": true,
 
     // Number
-    "number-leading-zero": "never",
     "number-max-precision": 4,
     "number-no-trailing-zeros": true,
 
@@ -39,7 +37,7 @@ module.exports = {
 
     // Declaration
     "declaration-bang-space-after": "never",
-    "declaration-bang-space-before": "never",
+    "declaration-bang-space-before": "always",
     "declaration-colon-newline-after": "always-multi-line",
 
     // Declaration block

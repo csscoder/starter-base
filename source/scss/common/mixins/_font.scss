@@ -39,7 +39,7 @@
   }
 
   @font-face {
-    font-family: quote($name);
+    font-family: $name;
     font-style: $style;
     font-weight: $weight;
     src: $src;

@@ -41,5 +41,5 @@ Command to build project (minified files js and css). New files will be add to "
  
 Developing project (run local server http://localhost:1981). Any cange automatic build new version project.
 
-    gulp dev
+    gulp --dev
     

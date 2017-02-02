@@ -2,6 +2,7 @@
 /node_modules/
 /build/
 /source/lint-result/
+/source/img/
 /.idea/
 /.happypack/
 .DS_Store

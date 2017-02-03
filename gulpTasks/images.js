@@ -16,11 +16,16 @@ gulp.task('img-optymize', function () {
     .pipe(debug({'title':' image'}))
     .pipe(cache(imagemin({
       removeViewBox: true,
+      cleanupAttrs: true,
+      addAttributesToSVGElement: true,
       progressive: true,
       verbose: true,
       interlaced: true,
       optimizationLevel: 4,
-      use: [pngquant({quality: '97', speed: 4}), jpegoptim({ progressive: true, max: 80 })]
+      use: [
+        pngquant({quality: '97', speed: 4}),
+        jpegoptim({ progressive: true, max: 80 })
+      ]
     })))
     .pipe(gulp.dest(config.img.opti));
 });

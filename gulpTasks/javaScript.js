@@ -33,10 +33,10 @@ gulp.task('jsApp', function() {
           {
             test: /\.js$/,
             include: [
-              path.resolve(__dirname, 'source/js/')
+              path.resolve(__dirname, '../source/js/')
             ],
             exclude: [
-              path.resolve(__dirname, 'node_modules/')
+              path.resolve(__dirname, '../node_modules/')
             ],
             loader: 'babel-loader',
             options: {

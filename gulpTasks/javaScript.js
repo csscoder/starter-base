@@ -47,7 +47,9 @@ gulp.task('jsApp', function() {
       },
       plugins: [
         new webpack.ProvidePlugin({
-          '$': 'jquery'
+          '$': 'jquery',
+          'jQuery': 'jquery',
+          'window.jQuery': 'jquery'
         }),
         new webpack.optimize.CommonsChunkPlugin({
           name: 'common',

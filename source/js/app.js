@@ -10,5 +10,5 @@
 
 (function () {
   'use strict';
-  $('.l-body').addClass('fi123');
+  $('.l-body').addClass('fi11');
 })();

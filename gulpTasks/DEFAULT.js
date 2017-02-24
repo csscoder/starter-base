@@ -8,8 +8,9 @@ gulp.task('default', () => {
     return runSequence(
       'img-optymize',
       'img-to-build',
+      'jsApp',
       ['svg-sprites', 'copy'],
-      ['scss', 'nunjucks', 'jsApp'],
+      ['scss', 'nunjucks', ],
       'browser',
       'watch-files'
     );
@@ -19,8 +20,9 @@ gulp.task('default', () => {
       'del',
       'img-optymize',
       'img-to-build',
+      'jsApp',
       ['svg-sprites', 'copy'],
-      ['scss', 'nunjucks', 'jsApp'],
+      ['scss', 'nunjucks'],
       'sftp'
     );
   } else {
@@ -29,8 +31,9 @@ gulp.task('default', () => {
       'del',
       'img-optymize',
       'img-to-build',
+      'jsApp',
       ['svg-sprites', 'copy'],
-      ['scss', 'nunjucks', 'jsApp']
+      ['scss', 'nunjucks']
     );
   }
 

@@ -6,7 +6,7 @@
   "description": "Created by CSSCODER(Alexander Zidyganov)",
   "scripts": {
     "start": "gulp",
-    "dev": "gulp dev"
+    "dev": "gulp --dev"
   },
   "author": {
     "name": "Alexander Zidyganov",

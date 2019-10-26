@@ -1,0 +1,147 @@
+///* Button */
+///***********************************************/
+//
+//<a class="ui-btn ui-btn--size-normal ui-btn--theme-primary" href="#3" tabindex="0"><span class="ui-btn__box" tabindex="-1">Button</span></a>
+
+/* buttons */
+/***********************************************/
+.ui-btn {
+  $self: &;
+  display: inline-block;
+  overflow: visible;
+  padding: 0;
+  cursor: pointer;
+  user-select: none;
+  text-align: center;
+  vertical-align: top;
+  white-space: nowrap;
+  text-decoration: none;
+  text-transform: none;
+  border: 0 solid;
+  outline: none;
+  background: none;
+  background-clip: border-box;
+  font-family: inherit;
+  font-size: em(16);
+  line-height: 1;
+  -webkit-touch-callout: none;
+  appearance: none;
+  -webkit-tap-highlight-color: rgba($color_black, 0);
+
+  &:focus {
+    z-index: 100;
+    outline: none;
+  }
+
+  &__box {
+    @include tr_all;
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    vertical-align: top;
+    line-height: 1;
+
+    &:focus {
+      outline: none;
+    }
+
+    // SIZE MOD
+    #{$self}--size-normal & {
+      font-size: em(16);
+    }
+    #{$self}--size-big & {
+      font-size: em(22);
+    }
+
+    // STATE LOADING + DISABLED
+    #{$self}--state-loading & {
+      color: transparent !important;
+
+      &::after {
+        position: absolute;
+        top: 0;
+        right: 0;
+        left: 0;
+        height: 100%;
+        content: '';
+        opacity: 1;
+        background-image: url('data:image/gif;base64,R0lGODlhLQAHAPEAAKqnperq6b+9u9TT0iH/C05FVFNDQVBFMi4wAwEAAAAh/wtYTVAgRGF0YVhNUAE/ACH5BAUKAAAALAAAAAAtAAcAQAIfjI8Hm20LnJyP0Rqvxhvubl3eJ4bUSE7oaabNqrZSAQAh+QQFCgABACwAAAAADQAHAAACCISPqcvtD2MBACH5BAUKAAEALAAAAAAdAAcAAAIdlI8XC+3vkjQrwNumrPjqxHXPh4RiRlLMiabmWQAAIfkEBQoAAQAsAAAAAC0ABwAAAjKcjxcr7e9WALTamrKRsDd5hZSWcR4EiheZmGe0qCurMC88yRi92beQ0gF4vcDvExMCCgAh+QQFCgAAACwAAAAALQAHAAACMoyPBzvt7xYQtNqaspGwN3mFlJZxHgSKF5mYZ7SoK6swLzzJGL3Z95DSCXg9wO8TEwoKACH5BAUKAAAALBAAAAAdAAcAAAIdjI8HO+3vkjQLwNumrPjqxHXPh4RiRlLMiabmWQAAOw==');
+        background-repeat: no-repeat;
+        background-position: 50% 50%;
+      }
+    }
+
+    #{$self}--state-disabled &,
+    #{$self}--state-loading & {
+      cursor: not-allowed;
+      box-shadow: none;
+    }
+
+    // THEME MOD 1
+    #{$self}--theme-primary & {
+      min-width: em(140);
+      height: em(50, 16);
+      padding: em(1 20, 16);
+      letter-spacing: em(.33, 16);
+      text-transform: uppercase;
+      color: $color_white;
+      border-radius: em(5px, 16);
+      background-color: $color_main;
+
+      &:hover {
+        background-color: lighten($color_main, 20%);
+      }
+
+      &:active {
+        background-color: lighten($color_main, 10%);
+      }
+    }
+
+    #{$self}--theme-primary#{$self}:focus & {
+      box-shadow: 0 0 2px 2px #02a9f4;
+    }
+
+    // THEME MOD 1 + STATES
+    #{$self}--theme-primary#{$self}--state-loading & {
+      background-color: lighten($color_main, 20%);
+    }
+
+    #{$self}--theme-primary#{$self}--state-disabled & {
+      opacity: .2;
+      background-color: $color_main;
+    }
+
+    #{$self}--theme-primary#{$self}--state-disabled:focus &,
+    #{$self}--theme-primary#{$self}--state-loading:focus & {
+      box-shadow: none;
+    }
+  }
+
+  /* buttons block */
+  &--block {
+    width: 100%;
+  }
+}
+
+
+
+// Elements UI
+//
+// Styleguide 1
+
+/* Buttons */
+/***********************************************/
+// Button
+//
+// Your standard button suitable for clicking.
+//
+// Markup: <a class="{{modifier_class}}" href="#3" tabindex="0"><span class="ui-btn__box" tabindex="-1">Button</span></a>
+//
+// .ui-btn.ui-btn--size-normal.ui-btn--theme-primary  - Theme primary
+// .ui-btn.ui-btn--size-normal.ui-btn--theme-primary.ui-btn--state-loading  - state loading
+// .ui-btn.ui-btn--size-normal.ui-btn--theme-primary.ui-btn--state-disabled  - state disabled
+// .ui-btn.ui-btn--size-big.ui-btn--theme-primary  - Size big
+//
+// Styleguide 1.1

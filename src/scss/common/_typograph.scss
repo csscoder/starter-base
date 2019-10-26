@@ -1,0 +1,24 @@
+/* Base typography */
+/***********************************************/
+
+//.g-typography {
+//  @include typographic;
+//
+//  > *:first-child {
+//    margin-top: 0;
+//  }
+//
+//  > *:last-child {
+//    margin-bottom: 0;
+//  }
+//}
+
+
+@font-face {
+  font-family: 'Abril Display';
+  src: url('../fonts/abril/AbrilDisplay-Bold.woff2') format('woff2'),
+  url('../fonts/abril/AbrilDisplay-Bold.woff') format('woff');
+  font-weight: 700;
+  font-style: normal;
+}
+

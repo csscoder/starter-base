@@ -1,0 +1,50 @@
+// media steps
+$media_steps: (
+  xs: 0,
+  sm: 576px,
+  md: 768px,
+  lg: 992px,
+  xl: 1200px,
+  xxl: 1400px,
+  xxx: 1900px
+) !default;
+
+@mixin res($media) {
+  @if map-has-key($media_steps, $media) {
+    @media only screen and (min-width: map-get($media_steps, $media)) {
+      @content;
+    }
+  }
+}
+
+@mixin res_less($media) {
+  @if map-has-key($media_steps, $media) {
+    @media only screen and (max-width: map-get($media_steps, $media) - 1px) {
+      @content;
+    }
+  }
+}
+
+@mixin res_only($media) {
+  $steps_list: map-keys($media_steps);
+  @if map-has-key($media_steps, $media) {
+    $i: index(($media_steps), ($media map-get($media_steps, $media)));
+    @if $i < length($steps_list) {
+      $min: nth($steps_list, $i);
+      $max: nth($steps_list, $i + 1);
+      @if map-get($media_steps, $min) > 0 {
+        @media (min-width: map-get($media_steps, $min)) and (max-width: map-get($media_steps, $max) - 1px) {
+          @content;
+        }
+      } @else {
+        @media only screen and (max-width: map-get($media_steps, $max) - 1px) {
+          @content;
+        }
+      }
+    } @else {
+      @media only screen and (min-width: map-get($media_steps,  nth($steps_list, $i)) ) {
+        @content;
+      }
+    }
+  }
+}

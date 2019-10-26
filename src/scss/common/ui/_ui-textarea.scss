@@ -1,0 +1,94 @@
+// <textarea name="area" id="area" cols="30" rows="10" class="ui-textarea ui-textarea--size-normal ui-textarea--theme-default" placeholder="Some text"></textarea>
+
+///* textarea */
+///***********************************************/
+.ui-textarea {
+  $self: &;
+
+  @include tr_all;
+  position: relative;
+  display: block;
+  overflow: auto;
+  box-sizing: border-box;
+  width: 100%;
+  min-width: 100%;
+  max-width: 100%;
+  margin: 0;
+  resize: vertical;
+  box-shadow: none;
+  appearance: none;
+
+  &::-ms-clear {
+    display: none;
+  }
+
+  &[disabled] {
+    cursor: not-allowed;
+  }
+
+  // Sizes
+  &--size-normal {
+    font-size: em(16px);
+  }
+
+  &--size-big {
+    font-size: em(20px);
+  }
+
+  // Themes
+  &--theme-default {
+    @include placeholder {
+      color: rgba($color_gray, .7);
+    }
+    min-height: em(120px, 16);
+    max-height: em(300px, 16);
+    padding: em(12, 16);
+    color: $color_black;
+    border-width: 1px;
+    border-style: solid;
+    border-color: $color_border_default;
+    border-radius: em(4px, 16);
+    background-color: $color_white;
+    box-shadow: none;
+    font-family: inherit;
+    font-weight: 400;
+    line-height: em(18px, 16);
+
+
+    &:hover {
+      border-color: $color_border_hover;
+    }
+
+    &:focus {
+      border-color: $color_border_focus;
+      outline: none;
+    }
+
+    &#{$self}--state-error {
+      color: $color_error;
+      border-color: $color_border_error;
+      background-color: rgba($color_error, .1);
+    }
+
+    &#{$self}--state-disabled {
+      cursor: not-allowed;
+      opacity: .4 !important;
+    }
+  }
+
+}
+
+
+
+// Textarea
+//
+// Your standard Textarea.
+//
+// Markup: <textarea name="area" id="area" cols="30" rows="10" class="ui-textarea  {{modifier_class}}" placeholder="Some text"></textarea>
+//
+// .ui-textarea--size-normal.ui-textarea--theme-default  - Theme default
+// .ui-textarea--size-normal.ui-textarea--theme-default.ui-textarea--state-error  - Theme default - state error
+// .ui-textarea--size-normal.ui-textarea--theme-default.ui-textarea--state-disabled  - Theme default - state disabled
+// .ui-textarea--size-big.ui-textarea--theme-default  - Theme default - big
+//
+// Styleguide 1.4

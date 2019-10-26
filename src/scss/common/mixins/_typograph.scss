@@ -1,0 +1,13 @@
+@function _strip-units($unit) {
+  @return $unit / ($unit * 0 + 1);
+}
+
+@mixin font_scale($font_min: 14px, $font_max: 16px, $width_min: 576px, $width_max: 1400px) {
+  font-size: em($font_min);
+  @media (min-width: $width_min) {
+    font-size: calc(#{$font_min}px + (#{_strip-units($font_max)} - #{_strip-units($font_min)}) * ((100vw - #{$width_min}) / (#{_strip-units($width_max)} - #{_strip-units($width_min)})));
+  }
+  @media (min-width: $width_max) {
+    font-size: em($font_max);
+  }
+}

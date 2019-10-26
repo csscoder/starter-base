@@ -1,0 +1,16 @@
+// Grid silent bootstrap
+///***********************************************/
+
+// media steps
+$media_steps: (
+  default: 'default',
+  sm: 576px,
+  md: 768px,
+  lg: 992px,
+);
+
+// container max width
+$container_max_widths: (
+  lg: 920px,
+);
+

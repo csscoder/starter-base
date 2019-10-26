@@ -1,0 +1,221 @@
+//.triangle-1 {
+//  @include triangle(up, 20px, $color: #ffe619); //20px wide and 20px high
+//}
+//
+//.triangle-2 {
+//  @include triangle(down, 20px 20px, $color: #ff3005); //20px wide and 20px high
+//}
+//
+//.triangle-3 {
+//  @include triangle(left, 20px 10px, $color: #ffaf14); //20px wide and 10px high
+//}
+//
+//.triangle-4 {
+//  @include triangle(down, 20px 5px, $color: #ff1870); //20px wide and 5px high
+//}
+//
+//.triangle-5 {
+//  @include triangle(right, 20px 10px 5px, $color: #ff28ca, $before: true); //weird! three different border sizes makes 10px high and 25px wide
+//}
+
+@mixin triangle($direction, $size: 12px, $color: currentColor, $before: false) {
+
+  $w: null;
+  $h: null;
+  $c: null;
+  $length: length($size);
+  $pseudo: if($before, "before", "after");
+
+  @if $color == "inherit" {
+    $color: null;
+  }
+
+  @if $length > 2 {
+    $w: nth($size, 1);
+    $h: nth($size, 2);
+    $c: nth($size, 3);
+  } @else if $length > 1 {
+    $w: nth($size, 1);
+    $h: nth($size, 2);
+    $c: nth($size, 2);
+  } @else if $length == 1 {
+    $w: nth($size, 1);
+    $h: nth($size, 1);
+    $c: nth($size, 1);
+  } @else {
+    @error "Invalid size \"#{$size}\"";
+  }
+
+  &:#{$pseudo} {
+
+    display: inline-block;
+    width: 0;
+    height: 0;
+    content: "";
+    vertical-align: middle;
+
+    @if $direction == "up" {
+
+      @if ($length < 3) {
+        border-right: $w / 2 solid transparent;
+        border-bottom: $h solid $color;
+        border-left: $w / 2 solid transparent;
+      } @else {
+        border-bottom: $h solid $color;
+        border-left: $w solid transparent;
+        border-right: $c solid transparent;
+      }
+
+    } @else if $direction == "down" {
+
+      @if ($length < 3) {
+        border-top: $h solid $color;
+        border-left: $w/2 solid transparent;
+        border-right: $w/2 solid transparent;
+      } @else {
+        border-top: $h solid $color;
+        border-left: $w solid transparent;
+        border-right: $c solid transparent;
+      }
+
+    } @else if $direction == "left" {
+
+      @if ($length < 3) {
+        border-right: $h solid $color;
+        border-top: $w/2 solid transparent;
+        border-bottom: $w/2 solid transparent;
+      } @else {
+        border-right: $h solid $color;
+        border-top: $w solid transparent;
+        border-bottom: $c solid transparent;
+      }
+
+    } @else if $direction == "right" {
+
+      @if ($length < 3) {
+        border-left: $h solid $color;
+        border-top: $w/2 solid transparent;
+        border-bottom: $w/2 solid transparent;
+      } @else {
+        border-left: $h solid $color;
+        border-top: $w solid transparent;
+        border-bottom: $c solid transparent;
+      }
+
+    } @else {
+      @error "Invalid direction \"#{$direction}\"";
+    }
+
+    @content;
+
+  }
+
+}
+
+
+@mixin triangleEm($direction, $size: 12px, $color: currentColor, $before: false) {
+
+  $w: null;
+  $h: null;
+  $c: null;
+  $length: length($size);
+  $pseudo: if($before, "before", "after");
+
+  @if $length > 2 {
+    $w: nth($size, 1);
+    $h: nth($size, 2);
+    $c: nth($size, 3);
+  } @else if $length > 1 {
+    $w: nth($size, 1);
+    $h: nth($size, 2);
+    $c: nth($size, 2);
+  } @else if $length == 1 {
+    $w: nth($size, 1);
+    $h: nth($size, 1);
+    $c: nth($size, 1);
+  } @else {
+    @error "Invalid size \"#{$size}\"";
+  }
+
+  &:#{$pseudo} {
+
+    display: inline-block;
+    content: "";
+    width: 0;
+    height: 0;
+    vertical-align: middle;
+
+    @if $direction == "up" {
+
+      @if ($length < 3) {
+
+        border-bottom: em($h) solid $color;
+        border-left: em($w/2) solid transparent;
+        border-right: em($w/2) solid transparent;
+
+      } @else {
+
+        border-bottom: em($h) solid $color;
+        border-left: em($w) solid transparent;
+        border-right: em($c) solid transparent;
+
+      }
+
+    } @else if $direction == "down" {
+
+      @if ($length < 3) {
+
+        border-top: em($h) solid $color;
+        border-left: em($w/2) solid transparent;
+        border-right: em($w/2) solid transparent;
+
+      } @else {
+
+        border-top: em($h) solid $color;
+        border-left: em($w) solid transparent;
+        border-right: em($c) solid transparent;
+
+      }
+
+    } @else if $direction == "left" {
+
+      @if ($length < 3) {
+
+        border-right: em($h) solid $color;
+        border-top: em($w/2) solid transparent;
+        border-bottom: em($w/2) solid transparent;
+
+      } @else {
+
+        border-right: em($h) solid $color;
+        border-top: em($w) solid transparent;
+        border-bottom: em($c) solid transparent;
+
+      }
+
+    } @else if $direction == "right" {
+
+      @if ($length < 3) {
+
+        border-left: em($h) solid $color;
+        border-top: em($w/2) solid transparent;
+        border-bottom: em($w/2) solid transparent;
+
+      } @else {
+
+        border-left: em($h) solid $color;
+        border-top: em($w) solid transparent;
+        border-bottom: em($c) solid transparent;
+
+      }
+
+    } @else {
+      @error "Invalid direction \"#{$direction}\"";
+    }
+
+    @content;
+
+  }
+
+}
+

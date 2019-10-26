@@ -1,0 +1,33 @@
+{
+  "scss": {
+    "beauty": true,
+    "beautifyOptions": {
+      "indent_char": " ",
+      "indent_size": 2
+    },
+    "autoPrefixer": {
+      "browsers": [
+        "> 2%",
+        "IE 11",
+        "iOS >= 7"
+      ]
+    },
+    "mediaQueriesPack": false,
+    "minify": false
+  },
+  "js": {
+    "beauty": true,
+    "beautifyOptions": {
+      "indent_char": " ",
+      "indent_size": 2
+    }
+  },
+  "html": {
+    "beauty": true,
+    "beautifyOptions": {
+      "indent_char": "\t",
+      "indent_size": 1,
+      "max_preserve_newlines": 0
+    }
+  }
+}

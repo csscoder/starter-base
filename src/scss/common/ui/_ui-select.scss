@@ -1,0 +1,145 @@
+//<div class="ui-select ui-select--size-normal ui-select--theme-default">
+//  <select name="#3" id="#3" class="ui-select__item" required>
+//    <option value="" hidden>Industry</option>
+//    <option value="1">Design</option>
+//    <option value="1">Industry 2</option>
+//    <option value="1">Industry 3</option>
+//  </select>
+//  <div class="ui-select__tie">
+//    <svg class="ico-svg ico-svg__select-ico">
+//      <use xlink:href="images/icons.svg#select-ico"></use>
+//    </svg>
+//  </div>
+//</div>
+
+/* select */
+/***********************************************/
+.ui-select {
+  $self: &;
+  position: relative;
+  display: inline-block;
+  width: 100%;
+  vertical-align: top;
+
+  // sizes
+  &--size-normal {
+    font-size: em(16px);
+  }
+
+  &--size-big {
+    font-size: em(20px);
+  }
+
+  &__item {
+    @include tr_all;
+    position: relative;
+    display: block;
+    box-sizing: border-box;
+    width: 100%;
+    cursor: pointer;
+    vertical-align: top;
+    outline: none;
+    box-shadow: none;
+    font-family: inherit;
+    font-size: 1em;
+    font-weight: 500;
+    line-height: 1.5;
+    appearance: none;
+
+    &::-ms-expand {
+      display: none;
+    }
+
+    &:-moz-focusring,
+    &::-moz-focus-inner {
+      color: transparent !important;
+      background-image: none !important;
+      text-shadow: 0 0 0 $color_black !important;
+    }
+
+    &[disabled] {
+      cursor: not-allowed;
+    }
+  }
+
+  // Theme style1
+  &--theme-default {
+
+    #{$self}__item {
+      height: em(45, 16);
+      padding: em(0 24 0 12, 16);
+      color: $color_black;
+      border: 1px solid $color_border_default;
+      border-radius: em(4, 16);
+      background-color: $color_white;
+
+      &:focus::-ms-value {
+        color: $color_dark;
+        background-color: $color_white;
+      }
+
+      &:hover {
+        border-color: $color_border_hover;
+      }
+
+      &:focus {
+        border-color: $color_border_focus;
+      }
+
+      &[disabled] {
+        opacity: .4 !important;
+        border-color: $color_border_default;
+      }
+
+      &:invalid {
+        color: #C7C7C7;
+      }
+
+    }
+
+    #{$self}__tie {
+      position: absolute;
+      top: 50%;
+      right: em(16);
+      margin-top: em(-11);
+
+      .ico-svg {
+        width: em(8);
+        height: em(21);
+        fill: $color_gray;
+      }
+
+    }
+
+    &.ui-select--state-error {
+      #{$self}__item {
+        border-color: $color_border_error;
+        background-color: rgba($color_error, .1);
+      }
+    }
+
+    &.ui-select--state-disabled {
+      #{$self}__item {
+        cursor: not-allowed;
+        opacity: .4 !important;
+      }
+    }
+
+  }
+}
+
+/* Select */
+/***********************************************/
+// Select
+//
+// Your standard Select.
+//
+// Markup: <div class="ui-select  {{modifier_class}}">  <select name="#3" id="#3" class="ui-select__item" required>  <option value="" hidden>Industry</option>  <option value="1">Design</option>  <option value="1">Industry 2</option>  <option value="1">Industry 3</option>  </select>  <div class="ui-select__tie">  <svg class="ico-svg ico-svg__select-ico">  <use xlink:href="images/icons.svg#select-ico"></use>  </svg>  </div>  </div>
+//
+// .ui-select--size-normal.ui-select--theme-default  - Theme default
+// .ui-select--size-normal.ui-select--theme-default.ui-select--state-error  - Theme default - state error
+// .ui-select--size-normal.ui-select--theme-default.ui-select--state-disabled  - Theme default - state disabled
+// .ui-select--size-big.ui-select--theme-default  - Theme default - big
+//
+// Styleguide 1.3
+

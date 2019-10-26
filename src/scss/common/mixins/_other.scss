@@ -1,0 +1,204 @@
+%noselect {
+  user-select: none;
+}
+@mixin noselect {
+  user-select: none;
+}
+
+// clearfix
+%clearfix {
+  &::after {
+    clear: both;
+  }
+
+  &::before,
+  &::after {
+    display: table;
+    content: "";
+  }
+}
+
+@mixin clearfix {
+  &::after {
+    clear: both;
+  }
+
+  &::before,
+  &::after {
+    display: table;
+    content: "";
+  }
+}
+
+// Placeholder
+@mixin placeholder {
+  &::-webkit-input-placeholder {
+    @content;
+  }
+
+  &::-moz-placeholder {
+    @content;
+    opacity: 1;
+  }
+
+  &:-ms-input-placeholder {
+    @content;
+  }
+}
+
+// Retina
+@mixin noRetinaMobile {
+  @media only screen and (min-width: 320px) {
+    @content;
+  }
+}
+
+@mixin retinaMobile {
+  @media only screen and (-webkit-min-device-pixel-ratio: 2) and (min-width: 320px),
+    only screen and (min--moz-device-pixel-ratio: 2) and (min-width: 320px),
+    only screen and (-o-min-device-pixel-ratio: 2 / 1) and (min-width: 320px),
+    only screen and (min-device-pixel-ratio: 2) and (min-width: 320px),
+    only screen and (min-resolution: 192dpi) and (min-width: 320px),
+    only screen and (min-resolution: 2dppx) and (min-width: 320px) {
+      @content;
+    }
+}
+
+@mixin noRetinaTablet {
+  @media only screen and (min-width: 700px) {
+    @content;
+  }
+}
+
+@mixin retinaTablet {
+  @media only screen and (-webkit-min-device-pixel-ratio: 2) and (min-width: 700px),
+    only screen and (min--moz-device-pixel-ratio: 2) and (min-width: 700px),
+    only screen and (-o-min-device-pixel-ratio: 2 / 1) and (min-width: 700px),
+    only screen and (min-device-pixel-ratio: 2) and (min-width: 700px),
+    only screen and (min-resolution: 192dpi) and (min-width: 700px),
+    only screen and (min-resolution: 2dppx) and (min-width: 700px) {
+      @content;
+    }
+}
+
+@mixin noRetinaDesktop {
+  @media only screen and (min-width: 1300px) {
+    @content;
+  }
+}
+
+@mixin retinaDesktop {
+  @media only screen and (-webkit-min-device-pixel-ratio: 2) and (min-width: 1300px),
+    only screen and (min--moz-device-pixel-ratio: 2) and (min-width: 1300px),
+    only screen and (-o-min-device-pixel-ratio: 2 / 1) and (min-width: 1300px),
+    only screen and (min-device-pixel-ratio: 2) and (min-width: 1300px),
+    only screen and (min-resolution: 192dpi) and (min-width: 1300px),
+    only screen and (min-resolution: 2dppx) and (min-width: 1300px) {
+      @content;
+    }
+}
+
+@mixin retina {
+  @media only screen and (-webkit-min-device-pixel-ratio: 2),
+    only screen and (min--moz-device-pixel-ratio: 2),
+    only screen and (-o-min-device-pixel-ratio: 2 / 1),
+    only screen and (min-device-pixel-ratio: 2),
+    only screen and (min-resolution: 192dpi),
+    only screen and (min-resolution: 2dppx) {
+      @content;
+    }
+}
+
+
+// Hiding w/o display:none; for accessibility
+%hidden {
+  position: absolute;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  border: 0;
+}
+
+@mixin hidden {
+  position: absolute;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  border: 0;
+}
+
+%hide {
+  display: none;
+  visibility: hidden;
+}
+
+@mixin hide {
+  display: none;
+  visibility: hidden;
+}
+
+%ul0 {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+@mixin ul0 {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+%li0 {
+  margin: 0;
+  padding: 0;
+}
+
+@mixin li0 {
+  margin: 0;
+  padding: 0;
+}
+
+// Link out - add click zone
+@mixin linkOut($x, $y: null) {
+  @if $y == null {
+    $y: $x;
+  }
+
+  &::before {
+    position: absolute;
+    top: - $y + em;
+    right: - $x + em;
+    bottom: - $y + em;
+    left: - $x + em;
+    display: block;
+    content: '';
+  }
+}
+
+// break words
+%breakwords {
+  -ms-word-break: break-all;
+  word-break: break-all;
+  word-break: break-word;
+  -ms-hyphens: auto;
+  -webkit-hyphens: auto;
+  -moz-hyphens: auto;
+  hyphens: auto;
+}
+
+@mixin breakwords {
+  -ms-word-break: break-all;
+  word-break: break-all;
+  word-break: break-word;
+  -ms-hyphens: auto;
+  -webkit-hyphens: auto;
+  -moz-hyphens: auto;
+  hyphens: auto;
+}

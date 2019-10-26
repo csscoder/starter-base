@@ -1,6 +1,0 @@
-<% _.forEach( icons, function( icon ){ %><%= icon.className %> {
-  width: em(<%= icon.width %>);
-  height: em(<%= icon.height %>);
-}
-<%= icon.style %>
-<% }); %>

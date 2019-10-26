@@ -1,0 +1,38 @@
+/*!
+   ####    #####    #####     ####     ###    #####    #######  ######
+  ##  ##  ##   ##  ##   ##   ##  ##   ## ##   ##  ##   ##       ##   ##
+ ##       ##       ##       ##       ##   ##  ##   ##  ##       ##   ##
+ ##        #####    #####   ##       ##   ##  ##   ##  #####    ######
+ ##            ##       ##  ##       ##   ##  ##   ##  ##       ## ##
+  ##  ##  ##   ##  ##   ##   ##  ##   ## ##   ##  ##   ##       ##  ##
+   ####    #####    #####     ####     ###    #####    #######  ##   ##
+https://csscoder.pro/
+*/
+
+@import "common/mixins/mixin";
+@import "common/variable";
+@import "common/typograph";
+@import "common/common";
+
+/* Fonts */
+/***********************************************/
+$font_title: 'Abril Display', Helvetica, Arial, sans-serif;
+$font_body: 'Montserrat', Helvetica, Arial, sans-serif;
+$font_style1: 'Big Shoulders Text', cursive;
+
+.l-body {
+  min-width: 320px;
+  font-family: $font_body;
+  font-size: 1.6rem;
+  font-weight: 400;
+  line-height: 1.4;
+  background-color: #000;
+  color: #fff;
+}
+
+.l-page {
+  position: relative;
+}
+
+// blocks
+@import "../blocks/blank/blank";

@@ -1,0 +1,2 @@
+//=require ../blocks/**/*.js
+

@@ -1,0 +1,55 @@
+{
+  "src": "src/",
+  "dest": "public/",
+  "blocks": "blocks/",
+
+  "scss": {
+    "src": "scss/",
+    "dest": "css/"
+  },
+
+  "js": {
+    "src": "js/",
+    "dest": "js/",
+    "app": "app.js",
+    "watch": [
+      "./src/js/**/*.js",
+      "./src/blocks/**/*.js"
+    ]
+  },
+
+  "html": {
+    "src": "html/",
+    "dest": "",
+    "watch": [
+      "./src/html/**/*.nunj.html",
+      "./src/blocks/**/*.nunj.html"
+    ],
+    "dataGlobalFile": "html/data/global.json"
+  },
+
+  "static": {
+    "src": "static/",
+    "dest": ""
+  },
+
+  "fonts": {
+    "src": "fonts/",
+    "dest": "fonts/"
+  },
+
+  "img": {
+    "src": "img/",
+    "dest": "img/"
+  },
+
+  "vendor": {
+    "src": "vendor/",
+    "dest": "vendor/"
+  },
+
+  "svgSprite": {
+    "src": "svg-sprite/",
+    "dest": "img/"
+  }
+}

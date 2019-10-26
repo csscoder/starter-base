@@ -1,0 +1,107 @@
+///* input */
+///***********************************************/
+
+// for icons above inputs
+// pointer-events: none;
+// <input type="text" class="ui-input ui-input--size-normal ui-input--theme-default" placeholder="Test">
+
+/* Input */
+/***********************************************/
+.ui-input {
+  @include tr_all;
+  $self: &;
+  position: relative;
+  display: inline-flex;
+  overflow: visible;
+  align-items: center;
+  justify-content: start;
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 100%;
+  margin: 0;
+  vertical-align: top;
+  box-shadow: none;
+  font-family: inherit;
+  line-height: 1.2;
+  appearance: none;
+
+  &[disabled] {
+    cursor: not-allowed;
+    opacity: .4 !important;
+  }
+
+  &::-ms-clear,
+  &::-ms-reveal {
+    display: none;
+  }
+
+  // Size class modify
+  &--size-normal {
+    font-size: em(16px);
+  }
+
+  &--size-big {
+    font-size: em(20px);
+  }
+
+  // Theme class modify
+
+  &--theme-default {
+
+    @include placeholder {
+      color: $color_gray;
+    }
+
+    height: em(45, 16);
+    padding: em(0 16, 16);
+    color: $color_black;
+    border-width: 1px;
+    border-style: solid;
+    border-color: $color_border_default;
+    border-radius: em(4, 16);
+    background-color: $color_white;
+    box-shadow: none;
+    font-weight: 500;
+
+    &:hover {
+      border-color: $color_border_hover;
+    }
+
+    &:focus {
+      border-color:  $color_border_focus;
+      outline: none;
+      background-color: $color_white;
+    }
+
+    &.ui-input--state-error {
+      color: $color_error;
+      border-color: $color_border_error;
+      background-color: rgba($color_error, .1);
+      box-shadow: none;
+    }
+
+    &.ui-input--state-disabled {
+      cursor: not-allowed;
+      opacity: .4 !important;
+    }
+  }
+
+}
+
+
+/* Inputs */
+/***********************************************/
+// Input
+//
+// Your standard inputs.
+//
+// Markup: <input type="text" class="ui-input {{modifier_class}}" placeholder="Test placeholder">
+//
+// .ui-input--size-normal.ui-input--theme-default  - Theme default
+// .ui-input--size-normal.ui-input--theme-default.ui-input--state-error - Theme default state error
+// .ui-input--size-normal.ui-input--theme-default.ui-input--state-disabled  - Theme default state disabled
+// .ui-input--size-big.ui-input--theme-default  - Theme default - big
+//
+// Styleguide 1.2
+
+

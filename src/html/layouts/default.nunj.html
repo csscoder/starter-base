@@ -1,0 +1,43 @@
+<!doctype html>
+<html class="l-html" lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>{{ title }}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="format-detection" content="telephone=no">
+
+    {# Facebook #}
+    {% if ogTitle %}<meta property="og:title" content="{{ ogTitle }}" />{% endif %}
+    {% if ogDescription %}<meta property="og:description" content="{{ ogDescription }}" />{% endif %}
+    {% if ogURL %}
+    <meta property="og:url" content="{{ ogSiteURL }}{{ ogURL }}" />
+    <meta property="og:type" content="website" />
+    {% endif %}
+    {% if ogImg %}<meta property="og:image" content="{{ ogSiteURL }}{{ ogImg }}" />{% endif %}
+    {% if ogSiteName %}<meta property="og:site_name" content="{{ogSiteName}}" />{% endif %}
+    {# Twitter #}
+    <meta name="twitter:card" content="summary_large_image" />
+    {% if ogTitle %}<meta name="twitter:title" content="{{ ogTitle }}" />{% endif %}
+    {% if ogDescription %}<meta name="twitter:description" content="{{ ogDescription }}" />{% endif %}
+    {% if ogURL %}<meta name="twitter:url" content="{{ ogSiteURL }}{{ ogURL }}" />{% endif %}
+    {% if ogImg %}<meta name="twitter:image" content="{{ ogSiteURL }}{{ ogImg }}" />{% endif %}
+    {% if ogTitle %}<meta name="twitter:image:alt" content="{{ ogTitle }}" />{% endif %}
+
+    {% include "shared/app-icons.nunj.html" %}
+    {% block head %}{% endblock %}
+    <link href="https://fonts.googleapis.com/css?family=Big+Shoulders+Text:500|Montserrat:400,600,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+
+  </head>
+  <body class="l-body">
+    <div class="l-page {% block pageClassMod %}{{ pageClassMod }}{% endblock %}">
+      {% block content %}{% endblock %}
+    </div>
+
+
+    {% block javaScript %}{% endblock %}
+    {#
+    <script src="js/app.js"></script>
+    #}
+  </body>
+</html>

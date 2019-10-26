@@ -1,0 +1,54 @@
+@lost flexbox flex;
+
+html {
+  box-sizing: border-box;
+  font-size: 10px;
+  -ms-overflow-style: scrollbar;
+  -ms-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+a {
+  background-color: transparent;
+  -webkit-text-decoration-skip: objects;
+}
+
+img {
+  border-style: none;
+}
+
+svg:not(:root) {
+  overflow: hidden;
+}
+
+// svg sprite icons
+.ico-svg {
+  display: inline-block;
+  vertical-align: top;
+  line-height: 100%;
+
+  use {
+    @include tr_all;
+  }
+}
+
+// hide
+.hide {
+  @include hide;
+}
+
+.hidden {
+  @include hidden;
+}

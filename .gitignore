@@ -1,4 +1,4 @@
-
+public/
 /node_modules/
 /build/
 /source/lint-result/
@@ -9,3 +9,4 @@
 yarn.lock
 /.ftpaccess.json
 /source/scss/common/svg-sprite-template.scss
+_helpers/_accessDeploy.json

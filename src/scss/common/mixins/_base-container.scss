@@ -1,0 +1,36 @@
+///* container */
+///***********************************************/
+$gutter_width_out: 15px !default;
+
+// container max width for adaptive styles
+$container_max_widths: (
+  sm: 540px,
+  md: 720px,
+  lg: 960px,
+  xl: 1140px,
+  xxl: 1340px,
+  xxx: 1840px
+) !default;
+
+
+@mixin container_fluid {
+  width: 100%;
+  margin-right: auto;
+  margin-left: auto;
+  padding-right: $gutter_width_out;
+  padding-left: $gutter_width_out;
+}
+
+@mixin container {
+  @include container_fluid;
+
+  @each $breakpoint, $value_media in $media_steps {
+    @each $breakpoint_width, $value_width in $container_max_widths {
+      @if $breakpoint == $breakpoint_width {
+        @media (min-width: $value_media) {
+          max-width: $value_width;
+        }
+      }
+    }
+  }
+}

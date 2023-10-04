@@ -35,7 +35,7 @@
     "gulp-svgstore": "7.0.1",
     "lost": "8.3.1",
     "moment-timezone": "0.5.27",
-    "postcss": "7.0.20",
+    "postcss": "8.4.31",
     "postcss-scss": "2.0.0",
     "postcss-sorting": "5.0.1",
     "rsync": "^0.6.1"
